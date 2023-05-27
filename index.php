@@ -9,10 +9,17 @@ $page_title = ML_HOME_PAGE;
   <title>
     <?= $page_title ?>
   </title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
+        crossorigin="anonymous">
+  <link rel="stylesheet" 
+        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"  
+        crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     .fa-trash-alt {
@@ -22,14 +29,13 @@ $page_title = ML_HOME_PAGE;
     a.nav-link {
       color: white;
       text-decoration: underline;
+      font-family: Arima;
 
     }
 
-    a {
-      font-size: 22px;
-    }
     h1 {
       text-align: center;
+      font-family: Arima;
     }
   </style>
 </head>
@@ -66,7 +72,6 @@ $page_title = ML_HOME_PAGE;
             <tr>
               <th scope="col"></th>
               <th scope="col"></th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -78,12 +83,20 @@ $page_title = ML_HOME_PAGE;
                 $mineral_image_file = ML_UPLOAD_PATH . ML_DEFAULT_MINERAL_FILE_NAME;
               }
 
-              echo "<tr><td><img src=" . $mineral_image_file . " class='img-thumbnail'" .
-                "style='max-height: 175px; border-color: #5432a8;' alt='Mineral image'></td>" .
-                "<td class='align-middle'><a class='nav-link' href='mineraldetails.php?id=" .
-                $row['id'] . "'>" . $row['mineral_name'] . "</a></td>" .
-                "<td  class='align-middle'><a class='nav-link' href='removemineral.php?id_to_delete=" .
-                $row['id'] . "'><i class='fas fa-trash-alt'></i></a></td></tr>";
+              $mineral_row = "<tr><td><img src=" . $mineral_image_file . " class='img-thumbnail'" .
+                    "style='max-height: 175px; border-color: #5432a8;' alt='Mineral image'></td>" .
+                    "<td class='align-middle'><a class='nav-link' href='mineraldetails.php?id=" .
+                    $row['id'] . "'>" . $row['mineral_name'] . "</a></td>";
+
+                if (isset($_SESSION['user_access_privileges'])
+                            && $_SESSION['user_access_privileges'] == 'admin')
+                {
+
+                  $mineral_row .= "<td  class='align-middle'><a class='nav-link' href='removemineral.php?id_to_delete=" .
+                  $row['id'] . "'><i class='fas fa-trash-alt'></i></a></td></tr>";
+                }
+
+                  echo $mineral_row;
             }
             ?>
 

@@ -9,7 +9,13 @@
     <link rel="stylesheet" 
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
-          crossorigin="anonymous">  
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+          font-family: Arima;
+        }
+    </style>  
   </head>
   <body>
   <?php
@@ -17,7 +23,7 @@
   ?>
     <div class="card">
       <div class="card-body">
-        <h1>Sign up for a Mineral Listing Account</h1>
+        <h1>Sign up for an account:</h1>
         <hr/>
           <?php
             $show_sign_up_form = true;
@@ -96,7 +102,7 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary" type="submit" name="signup_submission">Sign Up</button>
+          <button class="btn btn-primary" style="background-color: #5432a8; border-color: black;" type="submit" name="signup_submission">Sign Up</button>
         </form>
           <?php
             endif;

@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
           crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+          font-family: Arima;
+        }
+    </style>
   </head>
   <body>
   <?php
@@ -17,7 +23,7 @@
   ?>  
     <div class="card">
       <div class="card-body">
-        <h1>Login to Mineral Listing Account</h1>
+        <h1>Login:</h1>
         <hr/>
           <?php
             if (empty($_SESSION['user_id']) && isset($_POST['login_submission']))
@@ -100,7 +106,7 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary" type="submit" name="login_submission">Log In</button>
+          <button class="btn btn-primary" style="background-color: #5432a8; border-color: black;" type="submit" name="login_submission">Log In</button>
         </form>
           <?php
             elseif (isset($_SESSION['user_name'])):

@@ -11,6 +11,12 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
           crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: Arima;
+      }
+    </style>
   </head>
   <body>
   <?php
@@ -18,7 +24,7 @@
   ?>
     <div class="card">
       <div class="card-body">
-        <h1>Remove a Mineral</h1>
+        <h1 style="font-family: Arima";>Remove a Mineral</h1>
         <?php
             require_once('dbconnection.php');
             require_once('mineralimagefileutil.php');
@@ -83,7 +89,7 @@
                     }
 
             ?>
-            <h1><?=$row['name']?></h1>
+            <h1><?=$row['mineral_name']?></h1>
             <div class="row">
               <div class="col-2">
                 <img src="<?=$mineral_image_file?>" class="img-thumbnail" style="max-height: 200px;" alt="Minerals image">
@@ -92,12 +98,12 @@
                 <table class="table table-striped table-dark">
                   <tbody>
                     <tr>
-                      <th scope="row">Type</th>
-                      <td><?=$row['type']?></td>
+                      <th scope="row">Form</th>
+                      <td><?=$row['mineral_form']?></td>
                     </tr>
                     <tr>
                       <th scope="row">Color Description</th>
-                      <td><?=$row['color']?></td>
+                      <td><?=$row['color_description']?></td>
                     </tr>
                     <tr>
                       <th scope="row">Weight (grams)</th>
@@ -105,7 +111,7 @@
                     </tr>
                     <tr>
                       <th scope="row">Comments/notes</th>
-                      <td><?=$row['comment_note']?></td>
+                      <td><?=$row['comments']?></td>
                     </tr>
                   </tbody>
                 </table>
@@ -115,7 +121,7 @@
             <form method="POST" action="<?=$_SERVER['PHP_SELF'];?>">
               <div class="form-group row">
                 <div class="col-sm-2">
-                  <button class="btn btn-danger" type="submit" name="delete_mineral_submission">Delete Mineral</button>
+                  <button class="btn btn-danger mr-2" type="submit" name="delete_mineral_submission">Delete Mineral</button>
                 </div>
                 <div class="col-sm-2">
                   <button class="btn btn-success" type="submit" name="do_not_delete_mineral_submission">Don't Delete</button>

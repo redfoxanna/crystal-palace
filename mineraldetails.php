@@ -9,6 +9,12 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
           crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+          font-family: Arima;
+        }
+    </style>
     <title><?= $page_title ?></title>
   </head>
   <body>
@@ -17,7 +23,7 @@
   ?>
     <div class="card">
       <div class="card-body">
-        <h1>Mineral Details</h1>
+        <h1>Collection Details</h1>
         <hr/>
         <?php 
             if (isset($_GET['id'])):
@@ -72,13 +78,15 @@
                 </tr>
               </tbody>
             </table>
+            <?php
+                if (isset($_SESSION['user_access_privileges']) && $_SESSION['user_access_privileges'] == 'admin'): ?>
+                    <div class='nav-link'>*To change any of the details of this collection piece, 
+                          <a href='editmineral.php?id_to_edit=<?=$row['id']?>'> edit it here</a></div>
           </div>
         </div>
-            <?php
-                    if (isset($_SESSION['user_access_privileges']) && $_SESSION['user_access_privileges'] == 'admin'):
-            ?>
+            
+          
         <hr/>
-        <div class='nav-link'>If you would like to change any of the details of this mineral, feel free to <a href='editmineral.php?id_to_edit=<?=$row['id']?>'> edit it</a></div>
             <?php 
                     endif;
                 else:
